@@ -1,0 +1,15 @@
+<html>
+  <head></head>
+  <body>
+    <h1>shortcake</h1>
+    <p>yet another url shortener</p>
+    {% block content %} {% endblock %} {% with messages = get_flashed_messages()
+    %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+  </body>
+</html>

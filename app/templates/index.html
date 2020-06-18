@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<form action="{{url_for('shorten')}}" method="post" novalidate>
+  {{form.hidden_tag()}}
+  <p>
+    {{form.url.label}}: {{form.url()}} {% for error in form.url.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p>
+    {{form.submit()}}
+  </p>
+</form>
+{% endblock %}
