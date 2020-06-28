@@ -10,4 +10,3 @@ class Config:
         os.environ.get("DATABASE_URI") or f"sqlite:///{sqlite_db_file}"
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-

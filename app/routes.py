@@ -20,8 +20,11 @@ def index():
 def shorten():
     url_form = UrlForm(request.form)
     if url_form.validate():
-        url = {"link": url_form.url.data, "shortened": get_short(url_form.url.data)}
+        url = {
+            "link": url_form.url.data,
+            "shortened": get_short(url_form.url.data).shortcake_url,
+        }
         return render_template("shorten.html", url=url)
     else:
-        flash("Validation not successful")
+        flash("Must enter an URL")
         return redirect("index.html")
