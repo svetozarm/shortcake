@@ -1,11 +1,14 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% macro render_field(field) %}
+<p>
+  {{field.label}}: {{field()}} {% for error in field.errors %}
+  <span style="color: red;">[{{ error }}]</span>
+  {% endfor %}
+</p>
+{% endmacro %} {% block content %}
+
 <form action="{{url_for('shorten')}}" method="post" novalidate>
-  {{form.hidden_tag()}}
-  <p>
-    {{form.url.label}}: {{form.url()}} {% for error in form.url.errors %}
-    <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
-  </p>
+  {{form.hidden_tag()}} {{ render_field(form.url) }} {{
+  render_field(form.lifetime) }}
   <p>
     {{form.submit()}}
   </p>

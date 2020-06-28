@@ -26,5 +26,4 @@ def shorten():
         }
         return render_template("shorten.html", url=url)
     else:
-        flash("Must enter an URL")
-        return redirect("index.html")
+        return render_template("index.html", form=url_form)
